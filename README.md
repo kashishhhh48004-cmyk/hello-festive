@@ -1,121 +1,215 @@
-# Hello Festive
+<div align="center">
 
-Discover college fests, hackathons, workshops and local festivals in one place.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=230&section=header&text=Hello%20Festive&fontSize=64&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=Every%20fest%2C%20hackathon%20and%20festival%20near%20you&descSize=18&descAlignY=58" width="100%" alt="Hello Festive banner" />
 
-## Live Preview
+<a href="https://frontend-tawny-eight-63.vercel.app">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=900&color=D946EF&center=true&vCenter=true&width=640&lines=Discover+college+fests+%F0%9F%8E%89;Find+hackathons+near+you+%F0%9F%92%BB;Host+your+own+event+%F0%9F%9A%80;All+in+one+place+%E2%9C%A8" alt="Typing animation" />
+</a>
 
-| | Link |
-|---|---|
-| **Website** | https://frontend-tawny-eight-63.vercel.app |
-| **API health check** | https://hello-festive-api.onrender.com/api/health |
+<br />
 
-> The backend runs on a free Render instance, which sleeps after a period of inactivity. The first load can take 30 to 60 seconds. After that it is fast.
+[![Live Demo](https://img.shields.io/badge/🚀_LIVE_DEMO-Visit_Site-a855f7?style=for-the-badge&labelColor=1e1b4b)](https://frontend-tawny-eight-63.vercel.app)
+[![API](https://img.shields.io/badge/⚡_API-Health_Check-ec4899?style=for-the-badge&labelColor=1e1b4b)](https://hello-festive-api.onrender.com/api/health)
+[![Explore](https://img.shields.io/badge/🎪_EXPLORE-Events-f97316?style=for-the-badge&labelColor=1e1b4b)](https://frontend-tawny-eight-63.vercel.app/events)
 
-## Tech Stack
+<br />
 
-- **Frontend:** React (Vite), dark purple gradient theme, Leaflet + OpenStreetMap maps
-- **Backend:** Node.js + Express
-- **Database, login and poster storage:** Supabase
-- **Hosting:** Vercel (frontend), Render (backend)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)
+
+</div>
+
+<br />
+
+> ⏳ **Heads up:** the backend runs on a free Render instance that sleeps when idle. The first load can take **30 to 60 seconds**. After that, it is fast.
+
+---
+
+## 🌈 What is Hello Festive?
+
+**Hello Festive** helps students and neighbours find what is happening around them. Search by event name or city, save the ones you love, and host your own event so the right people find it.
+
+<table>
+<tr>
+<td align="center" width="25%">🎓<br /><b>College Fests</b><br /><sub>Cultural and tech fests</sub></td>
+<td align="center" width="25%">💻<br /><b>Hackathons</b><br /><sub>Build, compete, win</sub></td>
+<td align="center" width="25%">🛠️<br /><b>Workshops</b><br /><sub>Learn something new</sub></td>
+<td align="center" width="25%">🎪<br /><b>Local Events</b><br /><sub>Festivals near you</sub></td>
+</tr>
+</table>
+
+---
+
+## ✨ Features
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🙋 For Attendees
+
+| | |
+|:-:|---|
+| 🔍 | Search by name, city, category, price and date |
+| ❤️ | Save favourite events |
+| 🗺️ | See events on a map |
+| 🏷️ | Browse by category |
+| 🔐 | Secure login and forgot password |
+
+</td>
+<td width="50%" valign="top">
+
+### 🎤 For Organizers
+
+| | |
+|:-:|---|
+| ➕ | Create an event in minutes |
+| 🖼️ | Upload a poster (JPG, PNG, WebP, 3 MB) |
+| ✏️ | Edit or delete your own events |
+| 📣 | Reach students and locals for free |
+| 🛡️ | Admin panel removes fake events |
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology | Hosted on |
+|:-:|---|:-:|
+| 🎨 **Frontend** | React, Vite, Leaflet + OpenStreetMap | ![Vercel](https://img.shields.io/badge/Vercel-000?style=flat-square&logo=vercel) |
+| ⚙️ **Backend** | Node.js, Express | ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=white) |
+| 🗄️ **Database, Auth, Storage** | Supabase (PostgreSQL) | ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white) |
+
+### 🏗️ How it fits together
+
+```mermaid
+flowchart LR
+    U([👤 User]) --> F[🎨 Frontend<br/>Vercel]
+    F --> B[⚙️ Backend API<br/>Render]
+    B --> D[(🗄️ Supabase<br/>Database + Auth)]
+    F -. login .-> D
+
+    style U fill:#a855f7,stroke:#7e22ce,color:#fff
+    style F fill:#ec4899,stroke:#be185d,color:#fff
+    style B fill:#f97316,stroke:#c2410c,color:#fff
+    style D fill:#22c55e,stroke:#15803d,color:#fff
+```
+
+---
+
+## 📁 Project Structure
 
 ```
 hello-festive/
-├── frontend/   the website (runs on http://localhost:5173)
-├── backend/    the API (runs on http://localhost:5000)
-└── database/   schema.sql (run it in your Supabase project)
+├── 🎨 frontend/    React + Vite app        (deployed on Vercel)
+├── ⚙️ backend/     Express API             (deployed on Render)
+└── 🗄️ database/    schema.sql for Supabase
 ```
 
-## Features
+---
 
-- Search events by name, city, category, type, price and date
-- Create, edit and delete your own events, with poster upload
-- Save events with the heart
-- Login, register and forgot password
-- Admin panel to remove wrong or fake events
+## 💻 Run Locally
 
-## Run it locally
+<details>
+<summary><b>👉 Click to open the setup guide</b></summary>
 
-### What you need
+<br />
 
-- Node.js 20 or newer (check with `node -v`)
-- A Supabase project, with `database/schema.sql` already run in the SQL Editor
-- In Supabase, **Data API enabled**
+### 📋 Requirements
 
-### Step 1: Get your three Supabase values
+- Node.js 20 or newer (`node -v`)
+- A Supabase project with `database/schema.sql` run in the SQL Editor
+- **Data API** enabled in Supabase
 
-Supabase dashboard, then **Project Settings, API Keys**:
+### 🔑 Step 1: Get your Supabase values
 
-| Value | Goes in | Secret? |
-|---|---|---|
-| Project URL (`https://xxxx.supabase.co`) | backend and frontend | no |
-| Publishable key (older name: anon key) | frontend | no |
-| Secret key (older name: service_role key) | backend only | **yes, never share it** |
+Supabase dashboard → **Project Settings → API Keys**
 
-### Step 2: Create the two .env files
+| Value | Used in | Secret? |
+|---|:-:|:-:|
+| Project URL | backend + frontend | 🟢 No |
+| Publishable key (anon) | frontend | 🟢 No |
+| Secret key (service_role) | backend only | 🔴 **Yes, never share** |
 
-In **backend/**: copy `.env.example` to `.env` and fill in:
+### 📝 Step 2: Create the `.env` files
 
-```
+Copy `.env.example` to `.env` in both folders and fill them in.
+
+**backend/.env**
+
+```env
 PORT=5000
 CLIENT_URL=http://localhost:5173
 SUPABASE_URL=https://xxxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your secret key
+SUPABASE_SERVICE_ROLE_KEY=your-secret-key
 ```
 
-In **frontend/**: copy `.env.example` to `.env` and fill in:
+**frontend/.env**
 
-```
+```env
 VITE_SUPABASE_URL=https://xxxx.supabase.co
-VITE_SUPABASE_ANON_KEY=your publishable key
+VITE_SUPABASE_ANON_KEY=your-publishable-key
 VITE_API_URL=http://localhost:5000/api
 ```
 
-Never upload `.env` files to GitHub (the `.gitignore` already blocks them). Never put real keys in `.env.example`.
+> 🔒 Never commit `.env` files, and never put real keys in `.env.example`.
 
-### Step 3: Supabase login settings
+### 🔗 Step 3: Supabase login settings
 
-1. **Authentication, Sign In / Providers, Email:** turn **Confirm email** off while developing.
-2. **Authentication, URL Configuration:**
-   - Site URL: `http://localhost:5173`
-   - Redirect URLs: `http://localhost:5173/**`
+**Authentication → URL Configuration**
 
-### Step 4: Run it (two terminals)
+- Site URL: `http://localhost:5173`
+- Redirect URLs: `http://localhost:5173/**`
 
-Terminal 1, backend:
+### ▶️ Step 4: Start both servers
 
-```
+```bash
+# Terminal 1: backend
 cd backend
 npm install
 npm run dev
 ```
 
-You should see: `Hello Festive API running on http://localhost:5000`. Test it at http://localhost:5000/api/health.
-
-Terminal 2, frontend:
-
-```
+```bash
+# Terminal 2: frontend
 cd frontend
 npm install
 npm run dev
 ```
 
-Open **http://localhost:5173**.
+Open **http://localhost:5173** 🎉
 
-### Step 5: Make yourself admin
+### 👑 Step 5: Make yourself admin
 
-1. Register on the site with your email.
-2. In Supabase, open **SQL Editor** and run (use your email):
+Register on the site, then run this in the Supabase **SQL Editor**:
 
 ```sql
 update public.profiles set role = 'admin'
 where id = (select id from auth.users where email = 'your-email@example.com');
 ```
 
-3. Log out and in again. An **Admin panel** link appears in your profile menu.
+Log out and in again. An **Admin panel** link appears in your profile menu.
 
-## Deployment
+</details>
 
-### Backend on Render (Web Service)
+---
+
+## 🚀 Deployment
+
+<details>
+<summary><b>👉 Click to see how it is deployed</b></summary>
+
+<br />
+
+### ⚙️ Backend → Render (Web Service)
 
 | Setting | Value |
 |---|---|
@@ -124,79 +218,98 @@ where id = (select id from auth.users where email = 'your-email@example.com');
 | Start Command | `node src/server.js` |
 | Instance Type | Free |
 
-Environment variables:
-
-```
+```env
 SUPABASE_URL=https://xxxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your secret key
+SUPABASE_SERVICE_ROLE_KEY=your-secret-key
 CLIENT_URL=https://your-frontend.vercel.app
 ```
 
-Do not set `PORT`, Render sets it. `CLIENT_URL` must match your frontend link exactly, with no `/` at the end, otherwise the browser blocks requests (CORS error).
+Do not set `PORT`, Render sets it. `CLIENT_URL` must match the frontend link exactly, with no `/` at the end.
 
-### Frontend on Vercel
+### 🎨 Frontend → Vercel
 
 | Setting | Value |
 |---|---|
 | Root Directory | `frontend` |
 | Framework Preset | Vite |
 
-Environment variables:
-
-```
+```env
 VITE_SUPABASE_URL=https://xxxx.supabase.co
-VITE_SUPABASE_ANON_KEY=your publishable key
+VITE_SUPABASE_ANON_KEY=your-publishable-key
 VITE_API_URL=https://your-backend.onrender.com/api
 ```
 
-`frontend/vercel.json` makes page refresh and direct links work (no 404). After changing an environment variable on Vercel, redeploy.
+`frontend/vercel.json` keeps page refresh and direct links working.
 
-### Supabase URLs for the live site
+### 🗄️ Supabase URLs for production
 
-**Authentication, URL Configuration:**
+**Authentication → URL Configuration**
 
 - Site URL: your Vercel link
-- Redirect URLs: `https://your-frontend.vercel.app/**` (keep `http://localhost:5173/**` for local work)
+- Redirect URLs: `https://your-frontend.vercel.app/**`
 
-Turn **Confirm email** back on for production.
+Every `git push` to `main` redeploys both Vercel and Render automatically. 🔄
 
-Every `git push` to `main` redeploys both Vercel and Render automatically.
+</details>
 
-## How it works
+---
 
-- Anyone can browse, search and open events.
-- A logged-in user can create an event. It goes live immediately.
-- Users can edit or delete their own events, save events with the heart, and upload a poster (JPG, PNG or WebP, up to 3 MB).
-- Admins can remove any event.
-- Login, register and forgot password are handled by Supabase Auth.
+## 📡 API Reference
 
-## API (backend)
+<details>
+<summary><b>👉 Click to see all endpoints</b></summary>
 
-| Method and path | Who | What |
-|---|---|---|
-| GET `/api/health` | everyone | health check |
-| GET `/api/events` | everyone | search and filters: `q`, `city`, `category`, `type`, `price`, `when`, `page`, `limit` |
-| GET `/api/events/suggest?q=` | everyone | event name autocomplete |
-| GET `/api/events/:id` | everyone | one event |
-| GET `/api/categories` | everyone | categories with event counts |
-| GET `/api/locations/suggest?q=` | everyone | city autocomplete |
-| GET `/api/stats` | everyone | numbers for the home page |
-| POST `/api/events` | logged in | create event |
-| GET `/api/events/mine` | logged in | my events |
-| PUT, DELETE `/api/events/:id` | owner (delete: owner or admin) | edit or delete |
-| GET, POST, DELETE `/api/bookmarks` | logged in | saved events |
-| GET `/api/admin/events` | admin | all events |
+<br />
 
-## If something goes wrong
+| Method | Endpoint | Access | Description |
+|:-:|---|:-:|---|
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) | `/api/health` | 🌍 Public | Health check |
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) | `/api/events` | 🌍 Public | Search and filter (`q`, `city`, `category`, `type`, `price`, `when`, `page`, `limit`) |
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) | `/api/events/suggest?q=` | 🌍 Public | Event name autocomplete |
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) | `/api/events/:id` | 🌍 Public | Single event |
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) | `/api/categories` | 🌍 Public | Categories with event counts |
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) | `/api/locations/suggest?q=` | 🌍 Public | City autocomplete |
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) | `/api/stats` | 🌍 Public | Numbers for the home page |
+| ![POST](https://img.shields.io/badge/POST-3b82f6?style=flat-square) | `/api/events` | 🔐 Logged in | Create event |
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) | `/api/events/mine` | 🔐 Logged in | My events |
+| ![PUT](https://img.shields.io/badge/PUT-f59e0b?style=flat-square) ![DEL](https://img.shields.io/badge/DELETE-ef4444?style=flat-square) | `/api/events/:id` | 👤 Owner / Admin | Edit or delete |
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) ![POST](https://img.shields.io/badge/POST-3b82f6?style=flat-square) ![DEL](https://img.shields.io/badge/DELETE-ef4444?style=flat-square) | `/api/bookmarks` | 🔐 Logged in | Saved events |
+| ![GET](https://img.shields.io/badge/GET-22c55e?style=flat-square) | `/api/admin/events` | 🛡️ Admin | All events |
 
-| Problem | Fix |
+</details>
+
+---
+
+## 🛠️ Troubleshooting
+
+<details>
+<summary><b>👉 Something not working? Click here</b></summary>
+
+<br />
+
+| 😵 Problem | ✅ Fix |
 |---|---|
-| "Supabase keys are missing" banner | Check `frontend/.env`, then restart `npm run dev` |
-| Backend stops with "Missing SUPABASE_URL" | Check `backend/.env` (or the Render environment variables) |
-| "Cannot reach the server" | Backend is not running or still waking up, or `VITE_API_URL` is wrong |
-| CORS error in the browser console | `CLIENT_URL` on the backend does not match the frontend link |
-| "Something went wrong on the server" | Check the backend logs. Make sure `schema.sql` ran and the Data API is enabled |
-| Confirmation link opens localhost | Set the Site URL in Supabase to your live link |
-| Reset password link does nothing | Add the Redirect URL in Supabase |
-| Poster upload fails | Confirm you are logged in and the file is under 3 MB |
-| Port already in use | Close the other terminal, or change `PORT` in `backend/.env` |
+| "Supabase keys are missing" banner | Check `frontend/.env` and restart `npm run dev` |
+| Backend stops with "Missing SUPABASE_URL" | Check `backend/.env` or the Render environment variables |
+| "Cannot reach the server" | Backend is off or waking up, or `VITE_API_URL` is wrong |
+| CORS error in the console | `CLIENT_URL` on the backend does not match the frontend link |
+| "Something went wrong on the server" | Check backend logs. Confirm `schema.sql` ran and Data API is on |
+| Confirmation link opens localhost | Set the Supabase Site URL to your live link |
+| Poster upload fails | Be logged in and keep the file under 3 MB |
+| Port already in use | Close the other terminal or change `PORT` in `backend/.env` |
+
+</details>
+
+---
+
+<div align="center">
+
+### 💜 Made with love by **Kashish**
+
+[![Visit Site](https://img.shields.io/badge/🎉_Try_it_now-Hello_Festive-ec4899?style=for-the-badge&labelColor=1e1b4b)](https://frontend-tawny-eight-63.vercel.app)
+
+⭐ **Star this repo if you like it!** ⭐
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=110&section=footer" width="100%" alt="footer" />
+
+</div>
