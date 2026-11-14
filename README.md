@@ -2,9 +2,21 @@
 
 Discover college fests, hackathons, workshops and local festivals in one place.
 
+## Live Preview
+
+| | Link |
+|---|---|
+| **Website** | https://frontend-tawny-eight-63.vercel.app |
+| **API health check** | https://hello-festive-api.onrender.com/api/health |
+
+> The backend runs on a free Render instance, which sleeps after a period of inactivity. The first load can take 30 to 60 seconds. After that it is fast.
+
+## Tech Stack
+
 - **Frontend:** React (Vite), dark purple gradient theme, Leaflet + OpenStreetMap maps
 - **Backend:** Node.js + Express
 - **Database, login and poster storage:** Supabase
+- **Hosting:** Vercel (frontend), Render (backend)
 
 ```
 hello-festive/
@@ -13,13 +25,23 @@ hello-festive/
 └── database/   schema.sql (run it in your Supabase project)
 ```
 
-## What you need before starting
+## Features
+
+- Search events by name, city, category, type, price and date
+- Create, edit and delete your own events, with poster upload
+- Save events with the heart
+- Login, register and forgot password
+- Admin panel to remove wrong or fake events
+
+## Run it locally
+
+### What you need
 
 - Node.js 20 or newer (check with `node -v`)
-- A Supabase project, with `schema.sql` already run
+- A Supabase project, with `database/schema.sql` already run in the SQL Editor
 - In Supabase, **Data API enabled**
 
-## Step 1: Get your three Supabase values
+### Step 1: Get your three Supabase values
 
 Supabase dashboard, then **Project Settings, API Keys**:
 
@@ -29,11 +51,13 @@ Supabase dashboard, then **Project Settings, API Keys**:
 | Publishable key (older name: anon key) | frontend | no |
 | Secret key (older name: service_role key) | backend only | **yes, never share it** |
 
-## Step 2: Create the two .env files
+### Step 2: Create the two .env files
 
 In **backend/**: copy `.env.example` to `.env` and fill in:
 
 ```
+PORT=5000
+CLIENT_URL=http://localhost:5173
 SUPABASE_URL=https://xxxx.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your secret key
 ```
@@ -43,18 +67,19 @@ In **frontend/**: copy `.env.example` to `.env` and fill in:
 ```
 VITE_SUPABASE_URL=https://xxxx.supabase.co
 VITE_SUPABASE_ANON_KEY=your publishable key
+VITE_API_URL=http://localhost:5000/api
 ```
 
-Leave the other lines as they are. Never upload `.env` files to GitHub (the `.gitignore` already blocks them).
+Never upload `.env` files to GitHub (the `.gitignore` already blocks them). Never put real keys in `.env.example`.
 
-## Step 3: Supabase login settings
+### Step 3: Supabase login settings
 
 1. **Authentication, Sign In / Providers, Email:** turn **Confirm email** off while developing.
 2. **Authentication, URL Configuration:**
    - Site URL: `http://localhost:5173`
-   - Redirect URLs: add `http://localhost:5173/reset-password`
+   - Redirect URLs: `http://localhost:5173/**`
 
-## Step 4: Run it (two terminals)
+### Step 4: Run it (two terminals)
 
 Terminal 1, backend:
 
@@ -76,7 +101,7 @@ npm run dev
 
 Open **http://localhost:5173**.
 
-## Step 5: Make yourself admin
+### Step 5: Make yourself admin
 
 1. Register on the site with your email.
 2. In Supabase, open **SQL Editor** and run (use your email):
@@ -87,6 +112,55 @@ where id = (select id from auth.users where email = 'your-email@example.com');
 ```
 
 3. Log out and in again. An **Admin panel** link appears in your profile menu.
+
+## Deployment
+
+### Backend on Render (Web Service)
+
+| Setting | Value |
+|---|---|
+| Root Directory | `backend` |
+| Build Command | `npm install` |
+| Start Command | `node src/server.js` |
+| Instance Type | Free |
+
+Environment variables:
+
+```
+SUPABASE_URL=https://xxxx.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your secret key
+CLIENT_URL=https://your-frontend.vercel.app
+```
+
+Do not set `PORT`, Render sets it. `CLIENT_URL` must match your frontend link exactly, with no `/` at the end, otherwise the browser blocks requests (CORS error).
+
+### Frontend on Vercel
+
+| Setting | Value |
+|---|---|
+| Root Directory | `frontend` |
+| Framework Preset | Vite |
+
+Environment variables:
+
+```
+VITE_SUPABASE_URL=https://xxxx.supabase.co
+VITE_SUPABASE_ANON_KEY=your publishable key
+VITE_API_URL=https://your-backend.onrender.com/api
+```
+
+`frontend/vercel.json` makes page refresh and direct links work (no 404). After changing an environment variable on Vercel, redeploy.
+
+### Supabase URLs for the live site
+
+**Authentication, URL Configuration:**
+
+- Site URL: your Vercel link
+- Redirect URLs: `https://your-frontend.vercel.app/**` (keep `http://localhost:5173/**` for local work)
+
+Turn **Confirm email** back on for production.
+
+Every `git push` to `main` redeploys both Vercel and Render automatically.
 
 ## How it works
 
@@ -100,6 +174,7 @@ where id = (select id from auth.users where email = 'your-email@example.com');
 
 | Method and path | Who | What |
 |---|---|---|
+| GET `/api/health` | everyone | health check |
 | GET `/api/events` | everyone | search and filters: `q`, `city`, `category`, `type`, `price`, `when`, `page`, `limit` |
 | GET `/api/events/suggest?q=` | everyone | event name autocomplete |
 | GET `/api/events/:id` | everyone | one event |
@@ -117,16 +192,11 @@ where id = (select id from auth.users where email = 'your-email@example.com');
 | Problem | Fix |
 |---|---|
 | "Supabase keys are missing" banner | Check `frontend/.env`, then restart `npm run dev` |
-| Backend stops with "Missing SUPABASE_URL" | Check `backend/.env` |
-| "Cannot reach the server" | Backend is not running, or `VITE_API_URL` is wrong |
-| Backend errors mention a table or permission | Enable the **Data API** in Supabase, and confirm `schema.sql` ran |
-| Reset password link does nothing | Add the Redirect URL from Step 3 |
+| Backend stops with "Missing SUPABASE_URL" | Check `backend/.env` (or the Render environment variables) |
+| "Cannot reach the server" | Backend is not running or still waking up, or `VITE_API_URL` is wrong |
+| CORS error in the browser console | `CLIENT_URL` on the backend does not match the frontend link |
+| "Something went wrong on the server" | Check the backend logs. Make sure `schema.sql` ran and the Data API is enabled |
+| Confirmation link opens localhost | Set the Site URL in Supabase to your live link |
+| Reset password link does nothing | Add the Redirect URL in Supabase |
 | Poster upload fails | Confirm you are logged in and the file is under 3 MB |
 | Port already in use | Close the other terminal, or change `PORT` in `backend/.env` |
-
-## Before going live
-
-- Turn **Confirm email** back on in Supabase.
-- Put real URLs in the Supabase **Site URL** and **Redirect URLs**, and in `CLIENT_URL` on your backend host.
-- Host the backend (Render or Railway) and the frontend (Vercel or Netlify), and set `VITE_API_URL` to your hosted backend.
-- Add your social links in `frontend/src/components/Footer.jsx`.
